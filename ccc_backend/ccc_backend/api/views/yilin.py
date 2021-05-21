@@ -1,14 +1,16 @@
-from os import walk
-import json
 from django.shortcuts import render
-from django.http import HttpResponse
-import plotly.io as pio
-from plotly.offline import plot
-from plotly.graph_objs import Scatter
-import plotly
-from django.shortcuts import render,HttpResponse
 
 
-def WC_1(request):
-    img = 'WC1621397367.png'
-    return render(request, 'WC_1.html', {"WC_1": img})
+def WC_current(request):
+    img = 'WC_current.png'
+    return render(request, 'WC_current.html', {"WC_current": img})
+
+
+def WC_previous(request):
+    img = 'WC_previous.png'
+    return render(request, 'WC_previous.html', {"WC_previous": img})
+
+
+def WC_before_the_previous(request):
+    img = 'WC_before_the_previous.png'
+    return render(request, 'WC_before_the_previous.html', {"WC_before_the_previous": img})
