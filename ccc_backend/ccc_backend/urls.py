@@ -28,5 +28,5 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('api/', include('ccc_backend.api.urls')),
+    path('', include('ccc_backend.api.urls')),
 ]
