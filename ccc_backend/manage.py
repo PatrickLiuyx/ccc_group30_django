@@ -3,6 +3,11 @@
 import os
 import sys
 
+root_dir_name = "ccc_backend"
+dir_path = os.path.abspath(sys.argv[0])
+root_dir = dir_path[:dir_path.lower().find(root_dir_name) + len(root_dir_name)]
+sys.path.insert(0, root_dir)
+
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ccc_backend.settings')

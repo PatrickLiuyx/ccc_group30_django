@@ -118,6 +118,4 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, './ccc_backend/static/media')
 MEDIA_URL = '/media/'
 
-CSS_ROOT = os.path.join(BASE_DIR, './ccc_backend/static/css')
-CSS_URL = '/css/'
 
