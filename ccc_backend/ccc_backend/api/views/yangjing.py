@@ -76,7 +76,7 @@ for name_ in filename_list:
 
 def line15_17(request):
     tmp_plot = plotly.offline.plot(data_dict['line15_17'], output_type='div')
-    return render(request, './test_tmp/line15_17.html',
+    return render(request, 'emotion.html',
                   context={'line15_17': tmp_plot})
 
 
@@ -150,12 +150,13 @@ def age_pie_Loddon_Mallee(request):
 
 def monthly_dist_pie(request):
     tmp_plot = plotly.offline.plot(data_dict['monthly_dist_pie'], output_type='div')
-    return render(request, './test_tmp/monthly_dist_pie.html', context={'monthly_dist_pie': tmp_plot})
+    return render(request, ['emotion.html', './test_tmp/monthly_covidTweets_Bar.html'],
+                  context={'monthly_dist_pie': tmp_plot})
 
 
 def bar15_17(request):
     tmp_plot = plotly.offline.plot(data_dict['bar15_17'], output_type='div')
-    return render(request, './test_tmp/bar15_17.html', context={'bar15_17': tmp_plot})
+    return render(request, 'emotion.html', context={'bar15_17': tmp_plot})
 
 
 def covidCases_bar(request):
@@ -165,4 +166,5 @@ def covidCases_bar(request):
 
 def monthly_covidTweets_Bar(request):
     tmp_plot = plotly.offline.plot(data_dict['monthly_covidTweets_Bar'], output_type='div')
-    return render(request, './test_tmp/monthly_covidTweets_Bar.html', context={'monthly_covidTweets_Bar': tmp_plot})
+    return render(request, 'emotion.html',
+                  context={'monthly_covidTweets_Bar': tmp_plot})

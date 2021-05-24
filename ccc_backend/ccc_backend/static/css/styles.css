@@ -10195,7 +10195,7 @@ footer.footer .social-link:hover {
   height: auto;
   padding-top: 8rem;
   padding-bottom: 8rem;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/vic-main.png");
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../img/vic-main.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10211,64 +10211,6 @@ footer.footer .social-link:hover {
     height: 100vh;
   }
   .masthead h1 {
-    font-size: 5.5rem;
-  }
-}
-
-.masthead_cases {
-  min-height: 30rem;
-  position: relative;
-  display: table;
-  width: 100%;
-  height: auto;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/cases_background.jpeg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.masthead_cases h1 {
-  font-size: 4rem;
-  margin: 0;
-  padding: 0;
-  color: white;
-}
-
-@media (min-width: 992px) {
-  .masthead_cases {
-    height: 100vh;
-  }
-  .masthead_cases h1 {
-    font-size: 5.5rem;
-  }
-}
-
-.masthead_economy {
-  min-height: 30rem;
-  position: relative;
-  display: table;
-  width: 100%;
-  height: auto;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/economic3.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.masthead_economy h1 {
-  font-size: 4rem;
-  margin: 0;
-  padding: 0;
-  color: black;
-}
-
-@media (min-width: 992px) {
-  .masthead_economy {
-    height: 100vh;
-  }
-  .masthead_economy h1 {
     font-size: 5.5rem;
   }
 }
@@ -10349,3 +10291,11 @@ footer.footer .social-link:hover {
   font-size: 2.25rem;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
 }
+
+.img_center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
