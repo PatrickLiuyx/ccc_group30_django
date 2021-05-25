@@ -267,7 +267,9 @@
         <!-- Stock Market-->
         <section class="content-section" id="Stock">
             <div class="container">
-                <img src="{% static 'img/plots/stock.png' %}" alt="Workplace" width="1000" usemap="#planetmap">
+                {% autoescape off %}
+                {{ multi_chart_social.stockMarket_line }}
+                {% endautoescape %}
             </div>
         </section>
 
