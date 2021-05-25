@@ -182,3 +182,38 @@ def multi_chart_emotion(request):
     emotion_dict = {'covid_tw_bar': covid_tw_bar, 'dist_pie': dist_pie, 'line_year': line_year, 'bar_year': bar_year}
     return render(request, 'emotion.html',
                   {'multi_chart_emotion': emotion_dict})
+
+
+def multi_chart_social(request):
+    data_dict['age_pie_Grampians']['layout']['width'] = 700
+    data_dict['payroll_line_Grampians']['layout']['width'] = 700
+    data_dict['age_pie_Barwon_South_West']['layout']['width'] = 700
+    data_dict['payroll_line_Barwon_South_West']['layout']['width'] = 700
+    data_dict['age_pie_Loddon_Mallee']['layout']['width'] = 700
+    data_dict['payroll_line_Loddon_Mallee']['layout']['width'] = 700
+    data_dict['age_pie_Hume']['layout']['width'] = 700
+    data_dict['payroll_line_Hume']['layout']['width'] = 700
+    data_dict['age_pie_Greater_Melbourne']['layout']['width'] = 700
+    data_dict['payroll_line_Greater_Melbourne']['layout']['width'] = 700
+    data_dict['age_pie_Gippsland']['layout']['width'] = 700
+    data_dict['payroll_line_Gippsland']['layout']['width'] = 700
+    pie_Grampians = plotly.offline.plot(data_dict['age_pie_Grampians'], output_type='div')
+    line_Grampians = plotly.offline.plot(data_dict['payroll_line_Grampians'], output_type='div')
+    pie_Barwon_South_West = plotly.offline.plot(data_dict['age_pie_Barwon_South_West'], output_type='div')
+    line_Barwon_South_West = plotly.offline.plot(data_dict['payroll_line_Barwon_South_West'], output_type='div')
+    pie_Loddon_Mallee = plotly.offline.plot(data_dict['age_pie_Loddon_Mallee'], output_type='div')
+    line_Loddon_Mallee = plotly.offline.plot(data_dict['payroll_line_Loddon_Mallee'], output_type='div')
+    pie_Hume = plotly.offline.plot(data_dict['age_pie_Hume'], output_type='div')
+    line_Hume = plotly.offline.plot(data_dict['payroll_line_Hume'], output_type='div')
+    pie_Greater_Melbourne = plotly.offline.plot(data_dict['age_pie_Greater_Melbourne'], output_type='div')
+    line_Greater_Melbourne = plotly.offline.plot(data_dict['payroll_line_Greater_Melbourne'], output_type='div')
+    pie_Gippsland = plotly.offline.plot(data_dict['age_pie_Gippsland'], output_type='div')
+    line_Greater_Gippsland = plotly.offline.plot(data_dict['payroll_line_Gippsland'], output_type='div')
+    social_dict = {'pie_Grampians': pie_Grampians, 'line_Grampians': line_Grampians,
+                   'pie_Barwon_South_West': pie_Barwon_South_West, 'line_Barwon_South_West': line_Barwon_South_West,
+                   'pie_Loddon_Mallee': pie_Loddon_Mallee, 'line_Loddon_Mallee': line_Loddon_Mallee,
+                   'pie_Hume': pie_Hume, 'line_Hume': line_Hume,
+                   'pie_Greater_Melbourne': pie_Greater_Melbourne, 'line_Greater_Melbourne': line_Greater_Melbourne,
+                   'pie_Gippsland': pie_Gippsland, 'line_Greater_Gippsland': line_Greater_Gippsland}
+    return render(request, 'social_impact.html',
+                  {'multi_chart_social': social_dict})
