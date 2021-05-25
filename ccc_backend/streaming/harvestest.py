@@ -28,8 +28,8 @@ consumer_secret = "MMhJhIIolKU3ONdXpLC6oGzOwYGYwYgzMILc3etxZ0yjuNtdze"
 access_key = "1115405592372187136-19lxDiitrBBDSdSaLdyqgK3fJzJxWT"
 access_secret = "w2FsaXLITsGDy1PsRvqkdUdr78sKa6HYGcekcrB1p0xbM"
 
-#couch = couchdb.Server("http://admin:password@172.26.130.42:5984/")
-couch = couchdb.Server("http://admin:1a2s3d4f5g@localhost:5984/")
+couch = couchdb.Server("http://admin:password@172.26.130.42:5984/")
+#couch = couchdb.Server("http://admin:1a2s3d4f5g@localhost:5984/")
 
 try:
     couch.create("test_json")
