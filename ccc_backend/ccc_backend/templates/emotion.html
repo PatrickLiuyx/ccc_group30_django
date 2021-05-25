@@ -25,8 +25,8 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"><a class="js-scroll-trigger" href="#page-top">CCC Team 30</a></li>
                 <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="#page-top">This Scenario</a></li>
-                <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="#month">By Month</a></li>
-                <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="#year">By Year</a></li>
+                <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="#month">Covid-related Tweets</a></li>
+                <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="#year">Historical Tweets</a></li>
                 <li id="back" class="sidebar-nav-item"><a class="js-scroll-trigger" >Back To Home</a></li>
             </ul>
         </nav>
@@ -39,9 +39,16 @@
             </div>
             <div class="overlay"></div>
         </header>
+
+
         <!-- month-->
         <section class="content-section" id="month">
             <div class="container">
+                <div class="container bg-light content-section-heading">
+                    <p class="lead mb-5 text-left">Covid-related tweets from Victoria:
+By searching the Covid-19 keywords, such as “covid-19”, “covid”, “coronavirus”, tweets are grouped into covid-related and non covid-related where the covid-related tweets contain related keywords. The charts below bring you the distribution of covid-related:
+                    </p>
+                </div>
                 <div class="row">
                     <div class="col-lg-6">
                         {% autoescape off %}
@@ -56,19 +63,21 @@
                 </div>
             </div>
 
-            <div class="container bg-light content-section-heading">
-                <p class="lead mb-5 text-left">March, April July and August have the most number of Covid-related tweets. This is reasonable when these are exactly the periods with severe Covid-19 outbreaks in Victoria.
-                It can be shown by the bar chart and the table of sentiment statistics that the sentiments of covid-related tweets tend to be polarized compared to the non covid-related, with high proportion for both positive and negative tweets.
 
-                However, a concern here is that the potential bias of unbalanced groups can occur. The further study should involve a more comprehensive statistical model in order to 
-                </p>
-            </div>
 
         </section>
 
         <!-- year-->
         <section class="content-section" id="year">
             <div class="container">
+
+                                <div class="container bg-light content-section-heading">
+                    <p class="lead mb-5 text-left">
+                        Historical tweets from Melbourne:
+                        Let’s see what are people’s emotions during Covid-19 pandemic and non Covid-19 periods!
+                    </p>
+                </div>
+
                 <div class="row">
                     <div class="col-lg-6">
                         {% autoescape off %}
