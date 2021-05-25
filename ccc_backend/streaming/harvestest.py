@@ -19,13 +19,13 @@ import plotly.express as px
 import plotly.graph_objects as go
 import plotly.io as pio
 import os
-#from SentimentAnalysis import *
-#from TextAnalytics import *
-#from ccc_backend.ccc_backend.settings import *
+from SentimentAnalysis import *
+from TextAnalytics import *
+from ccc_backend.ccc_backend.settings import *
 
 
-#couch = couchdb.Server("http://admin:password@172.26.130.42:5984/")
-couch = couchdb.Server("http://admin:1a2s3d4f5g@localhost:5984/")
+couch = couchdb.Server("http://admin:password@172.26.130.42:5984/")
+#couch = couchdb.Server("http://admin:1a2s3d4f5g@localhost:5984/")
 
 try:
     couch.create("test_json")
@@ -89,7 +89,7 @@ class StreamListener(tweepy.StreamListener):
                 store_tweets = {'id': tweet['id'], 'time': tweet['created_at'], 'text': tweet['text'],
                                 'location': tweet['user']['location'], 'geo': tweet['geo']}
 
-            elif self.count == 30:
+            elif self.count == 300:
 
                 self.file_object.close()
 
@@ -211,6 +211,26 @@ class StreamListener(tweepy.StreamListener):
         plt.savefig(os.path.join(os.path.join(MEDIA_ROOT)+'WC_current.png'))
         plt.imshow(wordcloud)
         plt.axis("off")
+        current = os.path.join(os.path.join(MEDIA_ROOT)+ '/' + 'WC_current.png')
+        previous = os.path.join(os.path.join(MEDIA_ROOT)+ '/' + 'WC_previous.png')
+        before = os.path.join(os.path.join(MEDIA_ROOT)+ '/' + 'WC_before_the_previous.png')
+        if os.path.exists((MEDIA_ROOT) + '/' +'WC_before_the_previous.png') == True:
+            os.remove(before)
+            os.renames(previous, before)
+            os.renames(current, previous)
+            plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
+        elif os.path.exists((MEDIA_ROOT) + '/' +'WC_previous.png') == True:
+            os.remove(before)
+            os.renames(previous, before)
+            os.renames(current, previous)
+            plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
+        elif os.path.exists((MEDIA_ROOT) + '/' +'WC_current.png') == True:
+            os.remove(current)
+            os.rename(previous, current)
+            plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
+        else:
+            plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_before_the_previous.png'))
+            # plt.savefig(os.path.join(os.path.join(MEDIA_ROOT)+'/'+'WC_before_the_previous.png'))
         plt.show()
 
     def Line_plot(self, summary, file_name):
@@ -230,6 +250,7 @@ class StreamListener(tweepy.StreamListener):
         print(self.summary)
         fig1 = px.line(self.summary, x="sentiment", y="percentage",color="time")
         fig1.write_json('line_chart'+ self.file_name + '.json')
+        fig1.write_image('line2.png', engine="kaleido")
         fig1.show()
 
     def Percentage_table(self, cpercentage, file_name):
@@ -524,8 +545,8 @@ def Fun_start(consumer_key, consumer_secret, access_key, access_secret):
     api = tweepy.API(auth)
     streamListener = StreamListener()
     stream = tweepy.Stream(auth=api.auth, listener=streamListener, tweet_mode='extended')
-    # stream.filter(languages = ['en'],locations = [144.9,-37.8,145,-37.7])
-    stream.filter(languages=['en'], track=['vaccine'], locations=[144.9, -37.8, 145, -37.7])
+    stream.filter(languages = ['en'],locations = [144.9,-37.8,145,-37.7])
+    #stream.filter(languages=['en'], track=['vaccine'], locations=[144.9, -37.8, 145, -37.7])
 
 # def Fun_start():
 #     consumer_key = "7PC3L2O8ywCONU4ZuJ5h757mv"
