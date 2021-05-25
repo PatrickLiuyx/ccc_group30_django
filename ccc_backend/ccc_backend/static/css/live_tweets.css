@@ -780,6 +780,62 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 #myImg3:hover {opacity: 0.7;}
 
+#myImg4 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg4:hover {opacity: 0.7;}
+
+#myImg5 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg5:hover {opacity: 0.7;}
+
+#myImg6 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg6:hover {opacity: 0.7;}
+
+#myImg7 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg7:hover {opacity: 0.7;}
+
+#myImg8 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg8:hover {opacity: 0.7;}
+
+#myImg9 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg9:hover {opacity: 0.7;}
+
+#myImg10 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg10:hover {opacity: 0.7;}
+
 
 /* The Modal (background) */
 .modal {
@@ -899,7 +955,131 @@ filter:alpha(opacity=60);
   cursor: pointer;
 }
 
+.close4 {
+  position: absolute;
+  top: 50px;
+  right: 275px;
+  color: #E5598B;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 999;
+}
 
+.close4:hover,
+.close4:focus {
+  color: #598be5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close5 {
+  position: absolute;
+  top: 50px;
+  right: 275px;
+  color: #E5598B;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.close5:hover,
+.close5:focus {
+  color: #598be5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close6 {
+  position: absolute;
+  top: 50px;
+  right: 275px;
+  color: #E5598B;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.close6:hover,
+.close6:focus {
+  color: #598be5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close7 {
+  position: absolute;
+  top: 50px;
+  right: 275px;
+  color: #E5598B;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.close7:hover,
+.close7:focus {
+  color: #598be5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close8 {
+  position: absolute;
+  top: 50px;
+  right: 275px;
+  color: #E5598B;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.close8:hover,
+.close8:focus {
+  color: #598be5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close9 {
+  position: absolute;
+  top: 50px;
+  right: 275px;
+  color: #E5598B;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.close9:hover,
+.close9:focus {
+  color: #598be5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close10 {
+  position: absolute;
+  top: 50px;
+  right: 275px;
+  color: #E5598B;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.close10:hover,
+.close10:focus {
+  color: #598be5;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
@@ -982,63 +1162,3 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(60, 198, 171, 0.5);
 }
 
-
-/*special_wordcloud*/
-
-.row_special > .column_s {
-  padding: 0 8px;
-}
-
-.row_special:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Create four equal columns that floats next to eachother */
-.column_s {
-  float: left;
-  width: 50%;
-}
-
-.photo-gallery {
-  color:#313437;
-  background-color:#fff;
-}
-
-.photo-gallery p {
-  color:#7d8285;
-}
-
-.photo-gallery h2 {
-  font-weight:bold;
-  margin-bottom:40px;
-  padding-top:40px;
-  color:inherit;
-}
-
-@media (max-width:767px) {
-  .photo-gallery h2 {
-    margin-bottom:25px;
-    padding-top:25px;
-    font-size:24px;
-  }
-}
-
-.photo-gallery .intro {
-  font-size:16px;
-  max-width:1000px;
-  margin:0 auto 40px;
-}
-
-.photo-gallery .intro p {
-  margin-bottom:0;
-}
-
-.photo-gallery .photos {
-  padding-bottom:20px;
-}
-
-.photo-gallery .item {
-  padding-bottom:30px;
-}
