@@ -43,14 +43,14 @@
         <section class="content-section" id="month">
             <div class="container">
                 <div class="row">
-                    <div class="col ">
+                    <div class="col">
                         {% autoescape off %}
-                        {{ monthly_dist_pie }}
+                        {{ multi_chart_emotion.dist_pie }}
                         {% endautoescape %}
                     </div>
                     <div class="col">
                         {% autoescape off %}
-                        {{ monthly_covidTweets_Bar }}
+                        {{ multi_chart_emotion.covid_tw_bar }}
                         {% endautoescape %}
                     </div>
                 </div>
@@ -72,12 +72,12 @@
                 <div class="row">
                     <div class="col ">
                         {% autoescape off %}
-                        {{ line15_17 }}
+                        {{ multi_chart_emotion.line_year }}
                         {% endautoescape %}
                     </div>
                     <div class="col">
                         {% autoescape off %}
-                        {{ bar15_17 }}
+                        {{ multi_chart_emotion.bar_year }}
                         {% endautoescape %}
                     </div>
                 </div>

@@ -39,10 +39,8 @@ urlpatterns = []
 # e.g. http:localhost:8000/api/map/Map_bySuburb_March
 
 urlpatterns = [
-    path('main/emotion.html/', bar15_17),
+    path('main/emotion.html/', multi_chart_emotion),
     path('bar/covidCases_bar', covidCases_bar),
-    path('main/emotion.html/', monthly_covidTweets_Bar),
-    path('main/emotion.html/', line15_17),
     path('line/payroll_line_Barwon_South_West', payroll_line_Barwon_South_West),
     path('line/payroll_line_Loddon_Mallee', payroll_line_Loddon_Mallee),
     path('line/payroll_line_Gippsland', payroll_line_Gippsland),
@@ -56,7 +54,6 @@ urlpatterns = [
     path('pie/age_pie_Greater_Melbourne', age_pie_Greater_Melbourne),
     path('pie/age_pie_Hume', age_pie_Hume),
     path('pie/age_pie_Loddon_Mallee', age_pie_Loddon_Mallee),
-    path('main/emotion.html/', monthly_dist_pie),
 ]
 
 # show static file
@@ -78,3 +75,11 @@ urlpatterns += static('/wordcloud_before_the_previous/', document_root=settings.
 urlpatterns += [path('main/', main_page)]
 
 urlpatterns += [path('main/emotion.html/', emotion)]
+
+urlpatterns += [path('main/emotion.html/main.html', main_page)]
+
+urlpatterns += [path('main/emotion.html/emotion.html', emotion)]
+
+urlpatterns += [path('main/timeline.html', timeline)]
+
+urlpatterns += [path('main/live_tweets.html', live_tweets)]

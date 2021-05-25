@@ -168,3 +168,13 @@ def monthly_covidTweets_Bar(request):
     tmp_plot = plotly.offline.plot(data_dict['monthly_covidTweets_Bar'], output_type='div')
     return render(request, 'emotion.html',
                   context={'monthly_covidTweets_Bar': tmp_plot})
+
+
+def multi_chart_emotion(request):
+    covid_tw_bar = plotly.offline.plot(data_dict['monthly_covidTweets_Bar'], output_type='div')
+    dist_pie = plotly.offline.plot(data_dict['monthly_dist_pie'], output_type='div')
+    line_year = plotly.offline.plot(data_dict['line15_17'], output_type='div')
+    bar_year = plotly.offline.plot(data_dict['bar15_17'], output_type='div')
+    emotion_dict = {'covid_tw_bar': covid_tw_bar, 'dist_pie': dist_pie, 'line_year': line_year, 'bar_year': bar_year}
+    return render(request, 'emotion.html',
+                  {'multi_chart_emotion': emotion_dict})
