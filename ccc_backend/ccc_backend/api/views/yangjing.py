@@ -171,6 +171,10 @@ def monthly_covidTweets_Bar(request):
 
 
 def multi_chart_emotion(request):
+    data_dict['monthly_covidTweets_Bar']['layout']['width'] = 600
+    data_dict['monthly_dist_pie']['layout']['width'] = 600
+    data_dict['line15_17']['layout']['width'] = 600
+    data_dict['bar15_17']['layout']['width'] = 600
     covid_tw_bar = plotly.offline.plot(data_dict['monthly_covidTweets_Bar'], output_type='div')
     dist_pie = plotly.offline.plot(data_dict['monthly_dist_pie'], output_type='div')
     line_year = plotly.offline.plot(data_dict['line15_17'], output_type='div')

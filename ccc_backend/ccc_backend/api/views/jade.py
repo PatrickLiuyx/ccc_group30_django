@@ -15,3 +15,8 @@ def timeline(request):
 
 def live_tweets(request):
     return render(request, 'live_tweets.html')
+
+
+def social_impact(request):
+    return render(request, 'social_impact.html')
+

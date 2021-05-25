@@ -31,7 +31,7 @@
                 <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="#special">Special Case</a></li>
                 <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="#timeline">Live Timeline</a></li>
                 <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="#plots">Live Plots</a></li>
-                <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="main.html">Back To Home</a></li>
+                <li id="back" class="sidebar-nav-item"><a class="js-scroll-trigger" >Back To Home</a></li>
             </ul>
         </nav>
         <!-- Header-->
@@ -55,7 +55,7 @@
                     <div class="column_s item">
                         <a href="{% static 'img/WordCloud/special_live1.png' %}" data-lightbox="photos"><img class="img-fluid" src="{% static 'img/WordCloud/special_live1.png' %}"></a>
                         <p class="text-center">From 12:00PM to 13:00PM - May 9, 2021</p>
-                        <!-- <img src="{% static 'img/WordCloud/special_live1.png' %} " style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow"> -->
+                        <!-- <img src="{% static 'img/WordCloud/special_live1.png' %}" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow"> -->
                     </div>
                     <div class="column_s item">
                         <a href="{% static 'img/WordCloud/special_live2.png' %}" data-lightbox="photos"><img class="img-fluid" src="{% static 'img/WordCloud/special_live2.png' %}"></a>
@@ -399,4 +399,10 @@
         <script src="{% static 'js/scripts.js' %}"></script>
         <script src="{% static 'js/timeline_live.js' %}"></script>
     </body>
+<script>
+    $('#back').on('click', function(){
+    const href = window.location.origin;
+    location.href = href + "/main"
+})
+</script>
 </html>

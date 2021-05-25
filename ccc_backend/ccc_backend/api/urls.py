@@ -83,3 +83,5 @@ urlpatterns += [path('main/emotion.html/emotion.html', emotion)]
 urlpatterns += [path('main/timeline.html', timeline)]
 
 urlpatterns += [path('main/live_tweets.html', live_tweets)]
+
+urlpatterns += [path('main/social_impact.html', social_impact)]

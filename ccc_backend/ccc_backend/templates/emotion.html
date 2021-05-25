@@ -27,7 +27,7 @@
                 <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="#page-top">This Scenario</a></li>
                 <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="#month">By Month</a></li>
                 <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="#year">By Year</a></li>
-                <li class="sidebar-nav-item"><a class="js-scroll-trigger" href="main.html">Back To Home</a></li>
+                <li id="back" class="sidebar-nav-item"><a class="js-scroll-trigger" >Back To Home</a></li>
             </ul>
         </nav>
         <!-- Header-->
@@ -43,12 +43,12 @@
         <section class="content-section" id="month">
             <div class="container">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-lg-6">
                         {% autoescape off %}
                         {{ multi_chart_emotion.dist_pie }}
                         {% endautoescape %}
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6">
                         {% autoescape off %}
                         {{ multi_chart_emotion.covid_tw_bar }}
                         {% endautoescape %}
@@ -70,12 +70,12 @@
         <section class="content-section" id="year">
             <div class="container">
                 <div class="row">
-                    <div class="col ">
+                    <div class="col-lg-6">
                         {% autoescape off %}
                         {{ multi_chart_emotion.line_year }}
                         {% endautoescape %}
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6">
                         {% autoescape off %}
                         {{ multi_chart_emotion.bar_year }}
                         {% endautoescape %}
@@ -120,4 +120,10 @@
         <!-- Custom scripts for this template-->
         <script src="{% static 'js/scripts.js' %}"></script>
     </body>
+<script>
+    $('#back').on('click', function(){
+    const href = window.location.origin;
+    location.href = href + "/main"
+})
+</script>
 </html>
