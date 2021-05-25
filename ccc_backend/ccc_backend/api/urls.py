@@ -11,11 +11,9 @@ urlpatterns = []
 # url: http://127.0.0.1:8000/api/{urlpatterns}
 # e.g. http:localhost:8000/api/map/Map_bySuburb_March
 
-urlpatterns = [path('main/emotion.html/', multi_chart_emotion)]
+urlpatterns = [path('main/emotion.html/', multi_chart_emotion),]
 
 urlpatterns += [path('main/social_impact.html', multi_chart_social)]
-
-urlpatterns += [path('main/timeline.html', multi_chart_timeline)]
 
 # show static file
 # urlpatterns += [
