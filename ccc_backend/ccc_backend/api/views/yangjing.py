@@ -197,6 +197,7 @@ def multi_chart_social(request):
     data_dict['payroll_line_Greater_Melbourne']['layout']['width'] = 700
     data_dict['age_pie_Gippsland']['layout']['width'] = 700
     data_dict['payroll_line_Gippsland']['layout']['width'] = 700
+    data_dict['stockMarket_line']['layout']['width'] = 1100
     pie_Grampians = plotly.offline.plot(data_dict['age_pie_Grampians'], output_type='div')
     line_Grampians = plotly.offline.plot(data_dict['payroll_line_Grampians'], output_type='div')
     pie_Barwon_South_West = plotly.offline.plot(data_dict['age_pie_Barwon_South_West'], output_type='div')
@@ -209,11 +210,22 @@ def multi_chart_social(request):
     line_Greater_Melbourne = plotly.offline.plot(data_dict['payroll_line_Greater_Melbourne'], output_type='div')
     pie_Gippsland = plotly.offline.plot(data_dict['age_pie_Gippsland'], output_type='div')
     line_Greater_Gippsland = plotly.offline.plot(data_dict['payroll_line_Gippsland'], output_type='div')
+    stockMarket_line = plotly.offline.plot(data_dict['stockMarket_line'], output_type='div')
     social_dict = {'pie_Grampians': pie_Grampians, 'line_Grampians': line_Grampians,
                    'pie_Barwon_South_West': pie_Barwon_South_West, 'line_Barwon_South_West': line_Barwon_South_West,
                    'pie_Loddon_Mallee': pie_Loddon_Mallee, 'line_Loddon_Mallee': line_Loddon_Mallee,
                    'pie_Hume': pie_Hume, 'line_Hume': line_Hume,
                    'pie_Greater_Melbourne': pie_Greater_Melbourne, 'line_Greater_Melbourne': line_Greater_Melbourne,
-                   'pie_Gippsland': pie_Gippsland, 'line_Greater_Gippsland': line_Greater_Gippsland}
+                   'pie_Gippsland': pie_Gippsland, 'line_Greater_Gippsland': line_Greater_Gippsland,
+                   'stockMarket_line': stockMarket_line}
     return render(request, 'social_impact.html',
                   {'multi_chart_social': social_dict})
+
+
+def multi_chart_timeline(request):
+    data_dict['covidCases_bar']['layout']['width'] = 1000
+    data_dict['covidCases_bar']['layout']['height'] = 800
+    Cases_bar = plotly.offline.plot(data_dict['covidCases_bar'], output_type='div')
+    timeline_dict = {'Cases_bar': Cases_bar}
+    return render(request, 'timeline.html',
+                  {'multi_chart_timeline': timeline_dict})

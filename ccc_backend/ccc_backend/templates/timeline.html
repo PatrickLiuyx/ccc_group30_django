@@ -43,7 +43,9 @@
         <!-- distribution-->
         <section class="content-section" id="distribution">
             <div class="container img_center">
-                <img src="{% static 'img/plots/wordcloud_summary.png' %}" alt="Italian Trulli">
+                {% autoescape off %}
+                {{ multi_chart_timeline.Cases_bar }}
+                {% endautoescape %}
             </div>
         </section>
 
