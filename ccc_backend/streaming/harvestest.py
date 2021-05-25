@@ -19,10 +19,14 @@ import plotly.express as px
 import plotly.graph_objects as go
 import plotly.io as pio
 import os
-#from SentimentAnalysis import *
-#from TextAnalytics import *
-#from ccc_backend.ccc_backend.settings import *
+from SentimentAnalysis import *
+from TextAnalytics import *
+from ccc_backend.ccc_backend.settings import *
 
+consumer_key = "7PC3L2O8ywCONU4ZuJ5h757mv"
+consumer_secret = "MMhJhIIolKU3ONdXpLC6oGzOwYGYwYgzMILc3etxZ0yjuNtdze"
+access_key = "1115405592372187136-19lxDiitrBBDSdSaLdyqgK3fJzJxWT"
+access_secret = "w2FsaXLITsGDy1PsRvqkdUdr78sKa6HYGcekcrB1p0xbM"
 
 #couch = couchdb.Server("http://admin:password@172.26.130.42:5984/")
 couch = couchdb.Server("http://admin:1a2s3d4f5g@localhost:5984/")
@@ -89,7 +93,7 @@ class StreamListener(tweepy.StreamListener):
                 store_tweets = {'id': tweet['id'], 'time': tweet['created_at'], 'text': tweet['text'],
                                 'location': tweet['user']['location'], 'geo': tweet['geo']}
 
-            elif self.count == 30:
+            elif self.count == 300:
 
                 self.file_object.close()
 
@@ -134,7 +138,7 @@ class StreamListener(tweepy.StreamListener):
                 if t in results:
                     db.save(store_tweets)
                     break
-            print(self.count)
+            #print(self.count)
 
     def on_error(self, status_code):
         print("Encountered streaming error (", status_code, ")")
@@ -169,6 +173,7 @@ class StreamListener(tweepy.StreamListener):
         filename_result = 'SA_result' + self.file_name + '.json'
         with open(filename_result,'w') as file_obj:
             json.dump(SentimentAnalysis_result, file_obj)
+
     def WordCloud_plot(self, file_name):
         with open(self.file_name + '.json','r') as a:
             data = json.load(a)
@@ -208,9 +213,29 @@ class StreamListener(tweepy.StreamListener):
         plt.figure(figsize=(18,12))
         #MEDIA_ROOT = os.path.join(BASE_DIR, './ccc_backend/static/media')
         #MEDIA_URL = '/media/'
-        plt.savefig(os.path.join(os.path.join(MEDIA_ROOT)+'WC_current.png'))
+        #plt.savefig(os.path.join(os.path.join(MEDIA_ROOT)+'WC_current.png'))
         plt.imshow(wordcloud)
         plt.axis("off")
+        current = os.path.join(os.path.join(MEDIA_ROOT)+ '/' + 'WC_current.png')
+        previous = os.path.join(os.path.join(MEDIA_ROOT)+ '/' + 'WC_previous.png')
+        before = os.path.join(os.path.join(MEDIA_ROOT)+ '/' + 'WC_before_the_previous.png')
+        if os.path.exists((MEDIA_ROOT) + '/' +'WC_before_the_previous.png') == True:
+            os.remove(before)
+            os.renames(previous, before)
+            os.renames(current, previous)
+            plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
+        elif os.path.exists((MEDIA_ROOT) + '/' +'WC_previous.png') == True:
+            os.remove(before)
+            os.renames(previous, before)
+            os.renames(current, previous)
+            plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
+        elif os.path.exists((MEDIA_ROOT) + '/' +'WC_current.png') == True:
+            os.remove(current)
+            os.rename(previous, current)
+            plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
+        else:
+            plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_before_the_previous.png'))
+            # plt.savefig(os.path.join(os.path.join(MEDIA_ROOT)+'/'+'WC_before_the_previous.png'))
         plt.show()
 
     def Line_plot(self, summary, file_name):
@@ -230,6 +255,7 @@ class StreamListener(tweepy.StreamListener):
         print(self.summary)
         fig1 = px.line(self.summary, x="sentiment", y="percentage",color="time")
         fig1.write_json('line_chart'+ self.file_name + '.json')
+        fig1.write_image('line2.png', engine="kaleido")
         fig1.show()
 
     def Percentage_table(self, cpercentage, file_name):
@@ -346,26 +372,23 @@ class StreamListener(tweepy.StreamListener):
 #     current = os.path.join(os.path.join(MEDIA_ROOT)+ '/' + 'WC_current.png')
 #     previous = os.path.join(os.path.join(MEDIA_ROOT)+ '/' + 'WC_previous.png')
 #     before = os.path.join(os.path.join(MEDIA_ROOT)+ '/' + 'WC_before_the_previous.png')
-#
-#     # if os.path.exists((MEDIA_ROOT) + '/' +'WC_before_the_previous.png') == True:
-#     #     os.remove(previous)
-#     #     os.rename(before, previous)
-#     #     os.remove(current)
-#     #     os.rename(previous, current)
-#     #     plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
-#     # elif os.path.exists((MEDIA_ROOT) + '/' +'WC_previous.png') == True:
-#     #     os.remove(previous)
-#     #     os.rename(before, previous)
-#     #     os.remove(current)
-#     #     os.rename(previous, current)
-#     #     plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
-#     # elif os.path.exists((MEDIA_ROOT) + '/' +'WC_current.png') == True:
-#     #     os.remove(current)
-#     #     os.rename(previous, current)
-#     #     plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
-#     # else:
-#     #     plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
-#     plt.savefig(os.path.join(os.path.join(MEDIA_ROOT)+'/'+'WC_current.png'))
+#     if os.path.exists((MEDIA_ROOT) + '/' +'WC_before_the_previous.png') == True:
+#          os.remove(before)
+#          os.renames(previous, before)
+#          os.renames(current, previous)
+#          plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
+#     elif os.path.exists((MEDIA_ROOT) + '/' +'WC_previous.png') == True:
+#          os.remove(before)
+#          os.renames(previous, before)
+#          os.renames(current, previous)
+#          plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
+#     elif os.path.exists((MEDIA_ROOT) + '/' +'WC_current.png') == True:
+#          os.remove(current)
+#          os.rename(previous, current)
+#          plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_current.png'))
+#     else:
+#          plt.savefig(os.path.join(os.path.join(MEDIA_ROOT) + '/' + 'WC_before_the_previous.png'))
+#     # plt.savefig(os.path.join(os.path.join(MEDIA_ROOT)+'/'+'WC_before_the_previous.png'))
 #     plt.show()
 
 # def Line_plot():
@@ -386,7 +409,10 @@ class StreamListener(tweepy.StreamListener):
 #     print(summary)
 #
 #     fig1 = px.line(summary, x="sentiment", y="percentage",color="time")
-#     fig1.write_json('line_chart'+ file_name + '.json')
+#     #plotly.io.orca.config.save(fig1, 'line_chart.png')
+#     #pio.write_image(fig1, MEDIA_ROOT, format='png')
+#     fig1.write_image('line2.png', engine="kaleido")
+#     #fig1.write_json('line_chart'+ file_name + '.json')
 #     fig1.show()
 
 # def Percentage_table():
@@ -471,9 +497,9 @@ class StreamListener(tweepy.StreamListener):
 #
 #                 WordCloud_plot()
 #
-#                 #Line_plot()
+#                 Line_plot()
 #
-#                 #Percentage_table()
+#                 Percentage_table()
 #
 #                 count = 1
 #                 store_count = 1
@@ -524,14 +550,14 @@ def Fun_start(consumer_key, consumer_secret, access_key, access_secret):
     api = tweepy.API(auth)
     streamListener = StreamListener()
     stream = tweepy.Stream(auth=api.auth, listener=streamListener, tweet_mode='extended')
-    # stream.filter(languages = ['en'],locations = [144.9,-37.8,145,-37.7])
-    stream.filter(languages=['en'], track=['vaccine'], locations=[144.9, -37.8, 145, -37.7])
+    stream.filter(languages = ['en'],locations = [144.9,-37.8,145,-37.7])
+    #stream.filter(languages=['en'], track=['vaccine'], locations=[144.9, -37.8, 145, -37.7])
 
 # def Fun_start():
-#     consumer_key = "7PC3L2O8ywCONU4ZuJ5h757mv"
-#     consumer_secret = "MMhJhIIolKU3ONdXpLC6oGzOwYGYwYgzMILc3etxZ0yjuNtdze"
-#     access_key = "1115405592372187136-19lxDiitrBBDSdSaLdyqgK3fJzJxWT"
-#     access_secret = "w2FsaXLITsGDy1PsRvqkdUdr78sKa6HYGcekcrB1p0xbM"
+#     # consumer_key = "7PC3L2O8ywCONU4ZuJ5h757mv"
+#     # consumer_secret = "MMhJhIIolKU3ONdXpLC6oGzOwYGYwYgzMILc3etxZ0yjuNtdze"
+#     # access_key = "1115405592372187136-19lxDiitrBBDSdSaLdyqgK3fJzJxWT"
+#     # access_secret = "w2FsaXLITsGDy1PsRvqkdUdr78sKa6HYGcekcrB1p0xbM"
 #     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 #     auth.set_access_token(access_key, access_secret)
 #     api = tweepy.API(auth)
